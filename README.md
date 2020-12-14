@@ -30,4 +30,4 @@
   
 3.5)open your vscode
 
-# this method you have to already install python 3.7+ on your pc and set PATH if not please do it first
+### this method you have to already install python 3.7+ on your pc and set PATH if not please do it first
