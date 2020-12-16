@@ -1,10 +1,10 @@
 from flask import Flask, request, abort, render_template
 import json
 import pickle
-from Project.predict import *
+import Project.predict.predict
 
 models = []
-with open("./Project/predict/models.pckl", "rb") as f:
+with open("models.pckl", "rb") as f:
     while True:
         try:
             models.append(pickle.load(f))

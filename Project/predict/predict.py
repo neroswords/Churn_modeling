@@ -14,7 +14,7 @@ import pickle
 warnings.filterwarnings("ignore")
 models = []
 
-data = pd.read_csv("churn.csv")
+data = pd.read_csv("./Project/predict/churn.csv")
 features = data[data.columns[data.columns!='Exited'] ]
 target = data[data.columns[data.columns=='Exited'] ]
 x_train, x_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=0)
@@ -50,6 +50,7 @@ models.append(('RandomForest', rfc))
 models.append(('MLP', mlp))
 models.append(('NavieBayes', nb))
 
+print("hi")
 # b = log_reg.predict_proba(final)
 
 with open("models.pckl", "wb") as f:
