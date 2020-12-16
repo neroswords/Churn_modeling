@@ -1,7 +1,7 @@
 from flask import Flask, request, abort, render_template
 import json
 import pickle
-import Project.predict.predict
+import Project.Config.predict
 
 # models = []
 # with open("models.pckl", "rb") as f:
@@ -12,11 +12,11 @@ import Project.predict.predict
 #         except EOFError:
 #             break
 app = Flask(__name__)
-dt_model=pickle.load(open('dt_model.pkl','rb'))
-mlp_model=pickle.load(open('mlp_model.pkl','rb'))
-knn_model=pickle.load(open('knn_model.pkl','rb'))
-nb_model=pickle.load(open('nb_model.pkl','rb'))
-rfc_model=pickle.load(open('rfc_model.pkl','rb'))
+dt_model=pickle.load(open('./Project/predict/dt_model.pkl','rb'))
+mlp_model=pickle.load(open('./Project/predict/mlp_model.pkl','rb'))
+knn_model=pickle.load(open('./Project/predict/knn_model.pkl','rb'))
+nb_model=pickle.load(open('./Project/predict/nb_model.pkl','rb'))
+rfc_model=pickle.load(open('./Project/predict/rfc_model.pkl','rb'))
 
 @app.route('/')
 def home():

@@ -58,11 +58,11 @@ NB_pred = nb.predict(x_test_std)
 #     for model in models:
 #          pickle.dump(model, f)
 
-pickle.dump(dt,open('dt_model.pkl','wb'))
-pickle.dump(mlp,open('mlp_model.pkl','wb'))
-pickle.dump(knn,open('knn_model.pkl','wb'))
-pickle.dump(nb,open('nb_model.pkl','wb'))
-pickle.dump(rfc,open('rfc_model.pkl','wb'))
+pickle.dump(dt,open('Project/predict/dt_model.pkl','wb'))
+pickle.dump(mlp,open('Project/predict/mlp_model.pkl','wb'))
+pickle.dump(knn,open('Project/predict/knn_model.pkl','wb'))
+pickle.dump(nb,open('Project/predict/nb_model.pkl','wb'))
+pickle.dump(rfc,open('Project/predict/rfc_model.pkl','wb'))
 
 # model=pickle.load(open('dt_model.pkl','rb'))
 
