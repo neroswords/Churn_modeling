@@ -1,0 +1,196 @@
+.container{
+    background-image: url(../images/bg-container9.png), url(../images/bg-container10.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: top left, bottom left;
+    /* width: 70%; */
+    border-radius: 2rem;
+    box-shadow: 0 1rem 4rem 0 rgba(0, 0, 0, 0.1);
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-family: 'Prompt', sans-serif;
+    font-size: large;
+}
+
+.text-form{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+}
+/* 
+.text-center{
+    margin-top: 5%;
+} */
+
+.text-center p{
+    text-transform: uppercase;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+    .text-center p {
+    font-size: 18px;
+  }
+}
+
+.btn-submit{
+    background: #6ab165;
+    box-shadow: 0 5px 0 #4f934b;
+    border-radius: 25px;
+    margin-bottom: 5%;
+}
+
+ .btn-submit:hover{
+    top:3px;
+    box-shadow: 0 2px 0 #4f934b;
+}
+
+
+.submit-again {
+    margin-bottom: 5%;  
+}
+
+.topic{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+p i{
+    margin-right: 1%;
+    color: #f57e3a;
+}
+.topic .line{
+    border: 10;
+    height: 4px;
+    background-color: #f57e3a;
+    width: 250px;
+}
+
+.topic p{
+    font-size: large;
+    font-weight: bold;
+}
+
+.form-check {
+    margin-bottom: 5%;
+}
+
+.form-check .check2 {
+    margin-top: 1%;
+}
+
+
+/* .roof{
+    margin-top: 2%;
+    text-align: center;
+    z-index: 100;
+    position: relative;
+} */
+
+.wave-container {
+    position: relative;
+    /* background: #09F; */
+    color: #FFF;
+    text-align: center;
+    overflow: hidden;
+    z-index : 100;
+    position : relative;
+}
+
+@keyframes animateWave {
+    0% {
+      transform: scale(1,0);
+    }
+    100% {
+      transform: scale(1,1);
+    }
+}
+
+.wave-container > svg {
+    display: block;
+    transform-origin: bottom;
+    animation: animateWave 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+
+#inputdate {
+    font-weight: bold;
+}
+
+
+#head{
+    font-weight: bold;
+}
+
+.btn-delete{
+    text-align: center; 
+    background: #f4524d;
+    box-shadow: 0 4px 0 #f11f18;
+    transition: all 0.2s ease-in-out 0s;
+    border-radius: 25px;
+
+}
+
+.btn-delete:hover{
+    top:2px;
+    box-shadow: 0 2px 0 #f11f18;
+}
+
+.btn-edit{
+    border-radius:25px;
+    background: #0088cc;
+    box-shadow:0 5px 0 #006394;
+    transition:all 0.2s ease-in-out 0s;
+    position: relative;
+}
+
+.btn-edit:hover{
+    top:2px;
+    box-shadow:0 2px 0 #006394;
+}
+
+.btn-search{
+    background: #6ab165;
+    box-shadow: 0 5px 0 #4f934b;
+    border-radius: 25px;
+    transition:all 0.2s ease-in-out 0s;
+    position: relative;
+    top:0;
+}
+
+.btn-search:hover{
+    top:3px;
+    box-shadow:0 2px 0 #4ac97d;
+    box-shadow: 0 2px 0 #90a18f;
+}
+
+.submit-button{
+    background: #6ab165;
+    box-shadow: 0 5px 0 #4f934b;
+    border-radius: 25px;
+    transition:all 0.2s ease-in-out 0s;
+    position: relative;
+    top:0;
+}
+
+.submit-button:hover{
+    top:3px;
+    box-shadow:0 2px 0 #4ac97d;
+    box-shadow: 0 2px 0 #90a18f;
+}
+
+.left .button-delete{
+    text-align: center; 
+    background: #f4524d;
+    box-shadow: 0 4px 0 #f11f18;
+    transition: all 0.2s ease-in-out 0s;
+    border-radius: 25px;
+}
+
+.left .button-delete:hover{
+    top:2px;
+    box-shadow: 0 2px 0 #f11f18;
+}
