@@ -14,7 +14,7 @@ import pickle
 warnings.filterwarnings("ignore")
 # models = []
 
-data = pd.read_csv("./Project/predict/churn.csv")
+data = pd.read_csv("./Project/Config/churn.csv")
 features = data[data.columns[data.columns!='Exited'] ]
 target = data[data.columns[data.columns=='Exited'] ]
 # x = data[1:, 1:-1]
@@ -58,11 +58,11 @@ NB_pred = nb.predict(x_test_std)
 #     for model in models:
 #          pickle.dump(model, f)
 
-pickle.dump(dt,open('Project/predict/dt_model.pkl','wb'))
-pickle.dump(mlp,open('Project/predict/mlp_model.pkl','wb'))
-pickle.dump(knn,open('Project/predict/knn_model.pkl','wb'))
-pickle.dump(nb,open('Project/predict/nb_model.pkl','wb'))
-pickle.dump(rfc,open('Project/predict/rfc_model.pkl','wb'))
+pickle.dump(dt,open('Project/Config/dt_model.pkl','wb'))
+pickle.dump(mlp,open('Project/Config/mlp_model.pkl','wb'))
+pickle.dump(knn,open('Project/Config/knn_model.pkl','wb'))
+pickle.dump(nb,open('Project/Config/nb_model.pkl','wb'))
+pickle.dump(rfc,open('Project/Config/rfc_model.pkl','wb'))
 
 # model=pickle.load(open('dt_model.pkl','rb'))
 

@@ -12,11 +12,11 @@ import Project.Config.predict
 #         except EOFError:
 #             break
 app = Flask(__name__)
-dt_model=pickle.load(open('./Project/predict/dt_model.pkl','rb'))
-mlp_model=pickle.load(open('./Project/predict/mlp_model.pkl','rb'))
-knn_model=pickle.load(open('./Project/predict/knn_model.pkl','rb'))
-nb_model=pickle.load(open('./Project/predict/nb_model.pkl','rb'))
-rfc_model=pickle.load(open('./Project/predict/rfc_model.pkl','rb'))
+dt_model=pickle.load(open('./Project/Config/dt_model.pkl','rb'))
+mlp_model=pickle.load(open('./Project/Config/mlp_model.pkl','rb'))
+knn_model=pickle.load(open('./Project/Config/knn_model.pkl','rb'))
+nb_model=pickle.load(open('./Project/Config/nb_model.pkl','rb'))
+rfc_model=pickle.load(open('./Project/Config/rfc_model.pkl','rb'))
 
 @app.route('/')
 def home():
