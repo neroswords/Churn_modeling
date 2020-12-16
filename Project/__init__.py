@@ -17,8 +17,6 @@ mlp_model=pickle.load(open('mlp_model.pkl','rb'))
 knn_model=pickle.load(open('knn_model.pkl','rb'))
 nb_model=pickle.load(open('nb_model.pkl','rb'))
 rfc_model=pickle.load(open('rfc_model.pkl','rb'))
-# print(dt_model)
-
 
 @app.route('/')
 def home():
@@ -26,6 +24,8 @@ def home():
 
 @app.route('/predict',methods=['POST','GET'])
 def predict():
+    stay_in = 0
+    leave = 0
     customer_name = request.form['id']
     customer_surname = request.form['lastname']
     customer_age = request.form['age']
@@ -53,11 +53,26 @@ def predict():
     predict_data_knn = knn_model.predict([features])
     predict_data_nb = nb_model.predict([features])
     predict_data_rfc = rfc_model.predict([features])
-    print(predict_data_dt)
-    print(predict_data_mlp)
-    print(predict_data_knn)
-    print(predict_data_nb)
-    print(predict_data_rfc)
+    predict_list = [predict_data_dt,predict_data_mlp,predict_data_knn,predict_data_nb,predict_data_rfc]
+    # print(predict_data_dt)
+    # print(predict_data_mlp)
+    # print(predict_data_knn)
+    # print(predict_data_nb)
+    # print(predict_data_rfc)
+    for x in predict_list:
+        if x == [0]:
+            stay_in += 1
+        elif x == [1]:
+            leave +=1
+        else:
+            raise EnvironmentError
+    if stay_in > leave :
+        print("Stay")
+        return render_template('result.html',pred='stay')
+    else :
+        print("leave")
+        return render_template('result.html',pred='leave')
+    
     # for model in models:
     #     predict_data = model.predict([features])
     #     print("2")
