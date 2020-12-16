@@ -1,9 +1,9 @@
 # Churn_modeling
 ## 1.List of work
 
-1.1) cleaning and analysis data
+~~1.1) cleaning and analysis data~~
 
-1.2)do model for 5 methods(dicision tree is example)
+~~1.2)do model for 5 methods(dicision tree is example)~~
 
 1.3)do html page for input and output
 
@@ -13,6 +13,10 @@
 2.1)make web application that can predict churn modeling with 5 methods
 
 ## 3.how to start project
+
+3.0)open cmd and use command for install virtual env
+
+  >pip install virtualenv
 
 3.1)clone/pull this respository to your pc
 
@@ -30,4 +34,6 @@
   
 3.5)open your vscode
 
-### this method you have to already install python 3.7+ on your pc and set PATH if not please do it first
+  >code .
+
+### this method you have to already install python 3.7 only**** on your pc and set PATH if not please do it first
