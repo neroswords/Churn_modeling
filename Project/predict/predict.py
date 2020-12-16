@@ -12,11 +12,13 @@ import warnings
 import pickle
 
 warnings.filterwarnings("ignore")
-models = []
+# models = []
 
 data = pd.read_csv("./Project/predict/churn.csv")
 features = data[data.columns[data.columns!='Exited'] ]
 target = data[data.columns[data.columns=='Exited'] ]
+# x = data[1:, 1:-1]
+# y = data[1:, -1]
 x_train, x_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=0)
 
 sc = StandardScaler()
@@ -26,8 +28,8 @@ x_test_std  = sc.transform(x_test)
 
 dt = DecisionTreeClassifier(criterion="entropy")
 dt.fit(x_train_std, y_train)
-# dt_predict = dt.predict()
-
+# dt_predict = dt.predict(x_test)
+# print(x_test)
 knn = KNeighborsClassifier(n_neighbors=5)
 knn.fit(x_train_std, y_train)
 # knn_pred = knn.predict(x_test_std)
@@ -42,19 +44,29 @@ mlp.fit(x_train_std, y_train)
 
 nb = GaussianNB()
 nb.fit(x_train_std, y_train)
-# NB_pred = NB.predict(x_test_std)
+NB_pred = nb.predict(x_test_std)
 
-models.append(('DecisionTree', dt))
-models.append(('KNeighbors', knn))
-models.append(('RandomForest', rfc))
-models.append(('MLP', mlp))
-models.append(('NavieBayes', nb))
+# models.append(('DecisionTree', dt))
+# models.append(('KNeighbors', knn))
+# models.append(('RandomForest', rfc))
+# models.append(('MLP', mlp))
+# models.append(('NavieBayes', nb))
 
-print("hi")
 # b = log_reg.predict_proba(final)
 
-with open("models.pckl", "wb") as f:
-    for model in models:
-         pickle.dump(model, f)
-# pickle.dump(dt,open('dt_model.pkl','wb'))
+# with open("models.pckl", "wb") as f:
+#     for model in models:
+#          pickle.dump(model, f)
+
+pickle.dump(dt,open('dt_model.pkl','wb'))
+pickle.dump(mlp,open('mlp_model.pkl','wb'))
+pickle.dump(knn,open('knn_model.pkl','wb'))
+pickle.dump(nb,open('nb_model.pkl','wb'))
+pickle.dump(rfc,open('rfc_model.pkl','wb'))
+
 # model=pickle.load(open('dt_model.pkl','rb'))
+
+
+# def dt_predict(self):
+#     dt_pred = dt.predict(self)
+#     pass dt_pred

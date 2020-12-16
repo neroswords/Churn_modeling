@@ -31,12 +31,11 @@
             </p>
         </div>
         <div class="block-info text-form ">
-            <form  style="text-align: left;" action="/findjob/resume" method="POST" enctype="multipart/form-data">
+            <form  style="text-align: left;" action="/predict" method="POST" enctype="multipart/form-data">
                     <div class="topic">
                         <p><i class="fas fa-user"></i>Personal Infomation </p>
                         <div class="line"></div>
                     </div>
-                    <input type="hidden" name="username" value="">
                     <div class="form-row">
                         
                         <div class="col-xs-6 col-sm-12 col-md-6 col-lg-4">
@@ -59,8 +58,8 @@
                             <select class="form-control" name="gender" required>
                                 <option></option>
                                 
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                                <option value="0">Male</option>
+                                <option value="1">Female</option>
                             </select>
                         </div>
                         
