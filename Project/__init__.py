@@ -1,15 +1,22 @@
 from flask import Flask, request, abort, render_template
 import json
 import pickle
-# from Project.Config import *
+from Project.predict import *
 
-
+models = []
+with open("./Project/predict/models.pckl", "rb") as f:
+    while True:
+        try:
+            models.append(pickle.load(f))
+            # print(models)
+        except EOFError:
+            break
 # client = pymongo.MongoClient("")
 # db = client.test
 # col = db["User"]
 
 app = Flask(__name__)
-dt_model=pickle.load(open('dt_model.pkl','rb'))
+# dt_model=pickle.load(open('dt_model.pkl','rb'))
 
 
 @app.route('/')
