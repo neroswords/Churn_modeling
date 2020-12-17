@@ -13,7 +13,7 @@ import pickle
 
 warnings.filterwarnings("ignore")
 
-data = pd.read_csv("./Project/Config/churn.csv")
+data = pd.read_csv("./Project/Config/input/churn.csv")
 features = data[data.columns[data.columns!='Exited'] ]
 target = data[data.columns[data.columns=='Exited'] ]
 x_train, x_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=0)
@@ -42,8 +42,8 @@ nb.fit(x_train_std, y_train)
 NB_pred = nb.predict(x_test_std)
 
 
-pickle.dump(dt,open('Project/Config/dt_model.pkl','wb'))
-pickle.dump(mlp,open('Project/Config/mlp_model.pkl','wb'))
-pickle.dump(knn,open('Project/Config/knn_model.pkl','wb'))
-pickle.dump(nb,open('Project/Config/nb_model.pkl','wb'))
-pickle.dump(rfc,open('Project/Config/rfc_model.pkl','wb'))
+pickle.dump(dt,open('Project/Config/models/dt_model.pkl','wb'))
+pickle.dump(mlp,open('Project/Config/models/mlp_model.pkl','wb'))
+pickle.dump(knn,open('Project/Config/models/knn_model.pkl','wb'))
+pickle.dump(nb,open('Project/Config/models/nb_model.pkl','wb'))
+pickle.dump(rfc,open('Project/Config/models/rfc_model.pkl','wb'))

@@ -6,13 +6,13 @@ import Project.Config.predict
 
 
 app = Flask(__name__)
-dt_model=pickle.load(open('./Project/Config/dt_model.pkl','rb'))
-mlp_model=pickle.load(open('./Project/Config/mlp_model.pkl','rb'))
-knn_model=pickle.load(open('./Project/Config/knn_model.pkl','rb'))
-nb_model=pickle.load(open('./Project/Config/nb_model.pkl','rb'))
-rfc_model=pickle.load(open('./Project/Config/rfc_model.pkl','rb'))
+dt_model=pickle.load(open('./Project/Config/models/dt_model.pkl','rb'))
+mlp_model=pickle.load(open('./Project/Config/models/mlp_model.pkl','rb'))
+knn_model=pickle.load(open('./Project/Config/models/knn_model.pkl','rb'))
+nb_model=pickle.load(open('./Project/Config/models/nb_model.pkl','rb'))
+rfc_model=pickle.load(open('./Project/Config/models/rfc_model.pkl','rb'))
 
-f = open("./Project/Config/history.txt", "a")
+f = open("./Project/Config/log.txt", "a")
 @app.route('/')
 def home():
     return render_template('landing.html')
@@ -73,7 +73,7 @@ def predict():
     if stay_in > leave :
         print("Stay")
         complete_data.append("stay")
-        f = open("./Project/Config/history.txt", "a")
+        f = open("./Project/Config/log.txt", "a")
         f.write(",".join( repr(e) for e in complete_data ).replace("'", ''))
         f.write("\n")
         f.close()
@@ -81,7 +81,7 @@ def predict():
     else :
         print("leave")
         complete_data.append("leave")
-        f = open("./Project/Config/history.txt", "a")
+        f = open("./Project/Config/log.txt", "a")
         f.write(",".join( repr(e) for e in complete_data ).replace("'", ''))
         f.write("\n")
         f.close()
@@ -94,7 +94,7 @@ def history():
     # f = open("./Project/Config/history.txt", "r")
     # a = f.read()
     # f.close()
-    a = pd.read_csv('./Project/Config/history.txt', sep=',', error_bad_lines=False)
+    a = pd.read_csv('./Project/Config/log.txt', sep=',', error_bad_lines=False)
     a = a.to_html(index = False)
     print(a)
     return render_template('history.html',hist=a)
