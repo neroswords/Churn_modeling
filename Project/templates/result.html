@@ -11,11 +11,12 @@
     </head>
     <body>
         <h1>He will {{pred}} from prediction</h1>
-            {{dtpre}}
             {% if dtpre == [0]: %}
                 <p>yes</p>
             {% endif %}
+            {% elif dtpre == [1]: %}
+                <p>no</p>
+            {% endif %}
             <button type="button" onclick="window.location.href='/history'">Click Me!</button>
-        <script src="" async defer></script>
     </body>
 </html>
