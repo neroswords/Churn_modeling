@@ -1,7 +1,9 @@
 from flask import Flask, request, abort, render_template
 import json
+import pandas as pd
 import pickle
 import Project.Config.predict
+
 
 # models = []
 # with open("models.pckl", "rb") as f:
@@ -28,7 +30,7 @@ def home():
 def predict():
     stay_in = 0
     leave = 0
-    customer_name = request.form['id']
+    customer_id = request.form['id']
     customer_surname = request.form['lastname']
     customer_age = request.form['age']
     customer_gender = request.form['gender']
@@ -56,10 +58,19 @@ def predict():
     predict_data_nb = nb_model.predict([features])
     predict_data_rfc = rfc_model.predict([features])
     predict_list = [predict_data_dt,predict_data_mlp,predict_data_knn,predict_data_nb,predict_data_rfc]
-    f = open("./Project/Config/history.txt", "a")
-    f.write(str(features))
-    f.write("\n")
-    f.close()
+    complete_data = [customer_id,
+                        customer_surname,
+                        float(customer_score),
+                        float(customer_geography),
+                        float(customer_gender),
+                        float(customer_age),
+                        float(customer_tenure),
+                        float(customer_balance),
+                        float(customer_product),
+                        float(customer_credit_card),
+                        float(customer_active),
+                        float(customer_salary)]
+    
     # print(predict_data_dt)
     # print(predict_data_mlp)
     # print(predict_data_knn)
@@ -74,9 +85,19 @@ def predict():
             raise EnvironmentError
     if stay_in > leave :
         print("Stay")
+        complete_data.append("stay")
+        f = open("./Project/Config/history.txt", "a")
+        f.write(",".join( repr(e) for e in complete_data ).replace("'", ''))
+        f.write("\n")
+        f.close()
         return render_template('result.html',pred='stay')
     else :
         print("leave")
+        complete_data.append("leave")
+        f = open("./Project/Config/history.txt", "a")
+        f.write(",".join( repr(e) for e in complete_data ))
+        f.write("\n")
+        f.close()
         return render_template('result.html',pred='leave')
     
     # for model in models:
@@ -93,8 +114,11 @@ def predict():
     #     return render_template('forest_fire.html',pred='Your Forest is safe.\n Probability of fire occuring is {}'.format(output),bhai="Your Forest is Safe for now")
 @app.route('/history',methods=['POST','GET'])
 def history():
-    f = open("./Project/Config/history.txt", "r")
-    a = f.read()
-    f.close()
+    # f = open("./Project/Config/history.txt", "r")
+    # a = f.read()
+    # f.close()
+    a = pd.read_csv('./Project/Config/history.txt', sep=',', error_bad_lines=False)
+    a = a.to_html(index = False)
+    print(a)
     return render_template('history.html',hist=a)
 
