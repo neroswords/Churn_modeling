@@ -5,14 +5,6 @@ import pickle
 import Project.Config.predict
 
 
-# models = []
-# with open("models.pckl", "rb") as f:
-#     while True:
-#         try:
-#             models.append(pickle.load(f))
-#             print(models)
-#         except EOFError:
-#             break
 app = Flask(__name__)
 dt_model=pickle.load(open('./Project/Config/dt_model.pkl','rb'))
 mlp_model=pickle.load(open('./Project/Config/mlp_model.pkl','rb'))
@@ -20,6 +12,7 @@ knn_model=pickle.load(open('./Project/Config/knn_model.pkl','rb'))
 nb_model=pickle.load(open('./Project/Config/nb_model.pkl','rb'))
 rfc_model=pickle.load(open('./Project/Config/rfc_model.pkl','rb'))
 
+f = open("./Project/Config/history.txt", "a")
 @app.route('/')
 def home():
     return render_template('landing.html')
@@ -70,12 +63,6 @@ def predict():
                         float(customer_credit_card),
                         float(customer_active),
                         float(customer_salary)]
-    
-    # print(predict_data_dt)
-    # print(predict_data_mlp)
-    # print(predict_data_knn)
-    # print(predict_data_nb)
-    # print(predict_data_rfc)
     for x in predict_list:
         if x == [0]:
             stay_in += 1
@@ -99,19 +86,9 @@ def predict():
         f.write("\n")
         f.close()
         return render_template('result.html',pred='leave')
-    
-    # for model in models:
-    #     predict_data = model.predict([features])
-    #     print("2")
-    #     print(predict_data)
     return "ok"
 
-    
 
-    # if output>str(0.5):
-    #     return render_template('forest_fire.html',pred='Your Forest is in Danger.\nProbability of fire occuring is {}'.format(output),bhai="kuch karna hain iska ab?")
-    # else:
-    #     return render_template('forest_fire.html',pred='Your Forest is safe.\n Probability of fire occuring is {}'.format(output),bhai="Your Forest is Safe for now")
 @app.route('/history',methods=['POST','GET'])
 def history():
     # f = open("./Project/Config/history.txt", "r")

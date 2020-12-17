@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
 '2','2',1.0,1.0,0.0,1.0,2.0,1.0,2.0,1.0,1.0,2.0,'leave'
 '2','2',1.0,1.0,0.0,1.0,2.0,1.0,2.0,1.0,1.0,2.0,'leave'
+=======
+id,surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+410642,Roongpipat,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.0,1000.0,stay
+410642,Roongpipat,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.0,1000.0,stay
+>>>>>>> 9bcb9cce60f66898995be8949323094eb0143470
