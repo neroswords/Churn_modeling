@@ -64,6 +64,11 @@ def predict():
                         float(customer_credit_card),
                         float(customer_active),
                         float(customer_salary)]
+    if complete_data[4] == 0 : complete_data[4] = "Male"
+    else: complete_data[4] = "Female"
+    if complete_data[3] == 0 : complete_data[3] = "France"
+    elif complete_data[3] == 1 : complete_data[3] = "Germany"
+    elif complete_data[3] == 2 : complete_data[3] = "Spain"
     for x in predict_list:
         if x == [0]:
             stay_in += 1

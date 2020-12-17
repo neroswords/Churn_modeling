@@ -1,6 +1,21 @@
-<h1>He will {{pred}} from prediction</h1>
-{{dtpre}}
-{% if dtpre == [1]: %}
-    <p>yes</p>
-{% endif %}
-<button type="button" onclick="window.location.href='/history'">Click Me!</button>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>He will {{pred}} from prediction</h1>
+            {{dtpre}}
+            {% if dtpre == [0]: %}
+                <p>yes</p>
+            {% endif %}
+            <button type="button" onclick="window.location.href='/history'">Click Me!</button>
+        <script src="" async defer></script>
+    </body>
+</html>
