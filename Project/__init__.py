@@ -51,6 +51,7 @@ def predict():
     predict_data_nb = nb_model.predict([features])
     predict_data_rfc = rfc_model.predict([features])
     predict_list = [predict_data_dt,predict_data_mlp,predict_data_knn,predict_data_nb,predict_data_rfc]
+    complete_data = features
     complete_data = [customer_id,
                         customer_surname,
                         float(customer_score),
