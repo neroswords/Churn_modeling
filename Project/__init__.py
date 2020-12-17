@@ -78,8 +78,8 @@ def predict():
     elif complete_data[3] == 2 : complete_data[3] = "Spain"
     if complete_data[10] == 0 : complete_data[10] = "No"
     else: complete_data[10] = "Yes"
-    if complete_data[11] == 0 : complete_data[11] = "No"
-    else: complete_data[11] = "Yes"
+    if complete_data[9] == 0 : complete_data[9] = "No"
+    else: complete_data[9] = "Yes"
     for x in predict_list:
         if x == [0]:
             stay_in += 1
