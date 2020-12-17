@@ -19,7 +19,14 @@
         <div class="container col-xs-6 col-lg-7">
             <div class="findjob-form">
                 <div class="text-center pt-5">
-                    <h1>He will <span style="color:red">{{pred}}</span> from prediction</h1>
+                    <h1>{% if gender == 'Female':  %}
+                        She
+
+                        {% else : %}
+                        He
+
+                        {% endif %}
+                         will <span style="color:red">{{pred}}</span> from prediction</h1>
                         
                 </div>
                 <div class="block-info text-form ">
@@ -28,14 +35,14 @@
                                     <p>Decision tree</p>
                                     <p>Neural network</p>
                                     <p>k-nearest neighbors</p>
-                                    <p>Nearest neighbour</p>
+                                    <p>Naive Bayes</p>
                                     <p>Random forest</p>
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-4" align ="center">
                                     <!-- dtpre -->
                                     {% if dtpre == [1]: %}
-                                        <p>Leave</p>
+                                        <p >Leave</p>
                                     {% endif %}
                                     
                                     {% if dtpre == [0]: %}
@@ -79,13 +86,20 @@
                                     {% endif %}
                             </div>
                             <div class="form-group col-md-4">
-
+                                   <p>Accuracy : {{dt_score}} </p> 
+                                   <p>Accuracy : {{mlp_score}} </p> 
+                                    <p>Accuracy : {{knn_score}}</p> 
+                                  <p>Accuracy : {{nb_score}}</p>  
+                                   <p>Accuracy : {{rfc_score}}</p> 
+                                    
                             </div>    
                         </div>
                 </div>
                 
                     <div class="" align ="center" >
                         <button type="submit" class="btn btn-success col-xs-4 col-sm-4 col-lg-6 btn-submit" onclick="window.location.href='/history'" >See history</button>
+                        <button type="submit" class="btn btn-primary col-xs-4 col-sm-4 col-lg-6 btn-submit" onclick="window.location.href='/'" >Home</button>
+                    
                     </div>
                 
             </div>
