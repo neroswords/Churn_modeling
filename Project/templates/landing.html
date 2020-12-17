@@ -1,16 +1,163 @@
-<!DOCTYPE html>
-<html>
+
+<head>
+    <link rel="stylesheet" href="static/css/landing.css">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <link rel="icon" type="image/svg" href="/images/avatar.svg" />
+        <title>FJ:FIND-JOB</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link rel="stylesheet" href=""> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/cc4a7a1701.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.3.1/dist/css/bootstrap.min.css" >
+        <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="/header.css"> 
+        <script src="/javascripts/script.js" defer></script>
     </head>
-    <body>
-        <h1>Hello World</h1>
-        
-        <!-- <script src="" async defer></script> -->
-    </body>
-</html>
+</head>
+<body>
+
+<div class="container col-xs-6 col-lg-7">
+    <div class="findjob-form">
+        <div class="text-center pt-5">
+            
+            <p>
+              find your part-time jobs form
+            </p>
+        </div>
+        <div class="block-info text-form ">
+            <form  style="text-align: left;" action="/findjob/resume" method="POST" enctype="multipart/form-data">
+                    <div class="topic">
+                        <p><i class="fas fa-user"></i>ส่วนที่ 1 : ข้อมูลส่วนตัว </p>
+                        <div class="line"></div>
+                    </div>
+                    <input type="hidden" name="username" value="<%= currentUser.username %>">
+                    <div class="form-row">
+                        <div class="form-group col-xs-8 col-sm-8 col-md-8 col-lg-4">
+                            <label for="uploadimage">อัพโหลดรูป*</label>
+                            <input type="file" class="form-control-file"  name="image" required>
+                        </div>
+                        <div class="col-xs-6 col-sm-12 col-md-6 col-lg-4">
+                            <label for="inputFirstname">ชื่อจริง*</label>
+                            <input type="text" class="form-control"  name="firstname" value="<%= currentUser.firstname %>" required>
+                        </div>
+                        <div class="col-xs-6 col-sm-12 col-md-6 col-lg-4">
+                            <label for="inputLastname">นามสกุล*</label>
+                            <input type="text" class="form-control"  name="lastname"value="<%= currentUser.lastname %>"required>
+                        </div>
+                    </div>
+                    <div class="topic">
+                        <p><i class="fas fa-address-card"></i>ส่วนที่ 2 : ข้อมูลการสมัครงาน</p>
+                        <div class="line"></div> 
+                    </div>
+                    <div class="form-select">
+                        <label for="selectTypejob">ประเภทงานที่ต้องการสมัคร*</label>
+                            <select class="form-control" name="jobtype" required>
+                                <option value=""></option>
+                                <option value="งานบ้าน">งานบ้าน</option>
+                                <option value="งานครัว">งานครัว</option>
+                                <option value="งานช่าง">งานช่าง</option>
+                                <option value="งานพี่เลี้ยงเด็ก">งานพี่เลี้ยงเด็ก</option>
+                                <option value="งานสอนหนังสือ">งานสอนหนังสือ</option>
+                                <option value="งานขาย">งานขาย</option>
+                                <option value="งานบริการลูกค้า">งานบริการลูกค้า</option>
+                                <option value="งานคลังสินค้า">งานคลังสินค้า</option>
+                                <option value="งานธุรการ">งานธุรการ</option>
+                                <option value="งานแคชเชียร์">งานแคชเชียร์</option>
+                                <option value="งานส่งสินค้า">งานส่งสินค้า</option>
+                                <option value="งานขับรถ">งานขับรถ</option>
+                                <option value="งานบัญชีและการเงิน">งานบัญชีและการเงิน</option>
+                                <option value="งานจัดซื้อ">งานจัดซื้อ</option>
+                                <option value="งานก่อสร้าง">งานก่อสร้าง</option>
+                                <option value="งานทำความสะอาด">งานทำความสะอาด</option>
+                                <option value="งานตัวแทนจำหน่าย">งานตัวแทนจำหน่าย</option>
+                                <option value="งานบริการความงาม">งานบริการความงาม</option>
+                                <option value="งานรักษาความปลอดภัย">งานรักษาความปลอดภัย</option>
+                                <option value="งานถ่ายภาพ">งานถ่ายภาพ</option>
+                                <option value="อื่น...">อื่น...</option>
+                            </select><br>
+                        <label for="selectEmployment">ลักษณะการว่าจ้าง*</label>
+                            <select class="form-control" name="employmenttype" required>
+                                <option></option>
+                                <option value="Part time">Part time</option>
+                                <option value="Event">Event</option>
+                                <option value="ฝึกงาน">ฝึกงาน</option>
+                            </select>
+                        </div><br>
+                    <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <br>
+                                <label for="inputDate">ช่วงเวลาที่สะดวกทำงาน</label>
+                              </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputTime">ตั้งแต่*</label>
+                                <input type="time" class="form-control" id="inputTime" name="starttime" required/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputTime">ถึง*</label>
+                                <input type="time" class="form-control" id="inputTime" name="finishtime" required/>
+                            </div>
+                    </div>
+                    <div class="form-select">
+                        <label for="selectTypejob">รายได้ที่คาดว่าจะได้รับ*</label>
+                            <select class="form-control" name="salary" required>
+                                <option></option>
+                                <option value="น้อยกว่า 200 บาท/วัน"> น้อยกว่า 200 บาท/วัน</option>
+                                <option value="200-300 บาท/วัน"> 200-300 บาท/วัน</option>
+                                <option value="300-400 บาท/วัน"> 300-400 บาท/วัน</option>
+                                <option value="400-500 บาท/วัน"> 400-500 บาท/วัน</option>
+                                <option value="มากกว่า 500 บาท/วัน"> มากกว่า 500 บาท/วัน</option>
+                            </select>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="inputAbout">ข้อมูลเพิ่มเติมเกี่ยวกับผู้สมัครงาน*</label>
+                        <textarea class="form-control" id="Textarea" rows="4" name="desc" placeholder="พูดได้กี่ภาษา, พิมพ์ได้กี่คำต่อนาที เป็นต้น" required></textarea >
+                    </div>
+                    <div class="form-group">
+                        <label for="udloadResume">อัพโหลดเรซูเม่</label>
+                        <input type="file" class="form-control-file" id="uploadResume" name="file">
+                    </div>
+                    <div class="topic">
+                        <p><i class="fas fa-phone-alt"></i>ส่วนที่ 3 : ข้อมูลการติดต่อ</p>
+                        <div class="line"></div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="inputContact"></label>
+                        <textarea class="form-control" id="Textarea" rows="4" name="desc" placeholder="หมายเลขโทรศัพท์, อีเมล หรืออื่นๆที่สามารถใช้ติดต่อสื่อสารกับผู้สมัครงานได้โดยตรง"></textarea>
+                    </div>  -->
+                    <div class="form-group ">
+                        <label for="inputContact">ช่องทางการติดต่อ*</label>
+                        <textarea class="form-control" style="width: 70%;" id="Textarea" rows="4" name="contact" placeholder="หมายเลขโทรศัพท์, อีเมล หรืออื่นๆที่สามารถใช้ติดต่อสื่อสารกับผู้สมัครงานได้โดยตรง" required></textarea>
+                    </div>
+                    <div class="topic">
+                        <p><i class="fas fa-tasks"></i>ส่วนที่ 4 : </p>
+                        <div class="line"></div>
+                    </div>
+                    <div class="form-check " class="mb-4">
+                        <div class="check1">
+                            <input type="checkbox" class="form-check-input" required>
+                            <label class="form-check-label" for="Check">ฉันขอยืนยัน นอนยัน นั่งยันว่าข้อมูลทั้งหมดเป็นความจริงและยินยอมให้เปิดเผยข้อมูลนี้</label> 
+                        </div>
+                        <div class="check2">
+                            <input type="checkbox" class="form-check-input" required>
+                            <label class="form-check-label" for="Check2">ฉันได้อ่านและยอมรับ <a  href="/file/ข้อตกลงการใช้งานเว็บ.pdf" download>เงื่อนไขและข้อตกลงในการใช้บริการเว็ปไซต์</a></label>
+                        </div>
+                      </div>
+                    <div class="" align ="center" >
+                        <button type="submit" class="btn btn-success col-xs-4 col-sm-4 col-lg-6 btn-submit" >ส่งข้อมูล</button>
+                    </div>   
+            </form>
+        </div>
+    </div>
+</div>
+<!-- <div class="wave-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" 
+        fill-opacity="1" d="M0,128L48,144C96,160,192,192,288,181.3C384,171,480,117,576,96C672,75,768,85,864,106.7C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+    </svg>
+    </div> -->
+</body>

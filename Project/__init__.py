@@ -9,7 +9,7 @@ import pickle
 # col = db["User"]
 
 app = Flask(__name__)
-dt_model=pickle.load(open('dt_model.pkl','rb'))
+#dt_model=pickle.load(open('dt_model.pkl','rb'))
 
 
 @app.route('/')
