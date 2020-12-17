@@ -74,10 +74,10 @@ def predict():
             raise EnvironmentError
     if stay_in > leave :
         print("Stay")
-        return render_template('result.html',pred='features',fa=features)
+        return render_template('result.html',pred='stay')
     else :
         print("leave")
-        return render_template('result.html',pred='features',fa=features)
+        return render_template('result.html',pred='leave')
     
     # for model in models:
     #     predict_data = model.predict([features])
@@ -85,7 +85,7 @@ def predict():
     #     print(predict_data)
     return "ok"
 
-
+    
 
     # if output>str(0.5):
     #     return render_template('forest_fire.html',pred='Your Forest is in Danger.\nProbability of fire occuring is {}'.format(output),bhai="kuch karna hain iska ab?")
@@ -94,5 +94,7 @@ def predict():
 @app.route('/history',methods=['POST','GET'])
 def history():
     f = open("./Project/Config/history.txt", "r")
-    print(f.read())
+    a = f.read()
     f.close()
+    return render_template('history.html',hist=a)
+
