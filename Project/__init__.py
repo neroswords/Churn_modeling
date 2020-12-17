@@ -105,7 +105,8 @@ def predict():
                                 rfc_score = rfc_score,
                                 mlp_score = mlp_score,
                                 knn_score = knn_score,
-                                nb_score = nb_score)
+                                nb_score = nb_score,
+                                gender = complete_data[4] )
     else :
         print("leave")
         complete_data.append("leave")
@@ -124,7 +125,7 @@ def predict():
                                 rfc_score = rfc_score,
                                 mlp_score = mlp_score,
                                 knn_score = knn_score,
-                                nb_score = nb_score)
+                                gender = complete_data[4])
     return 400
 
 
