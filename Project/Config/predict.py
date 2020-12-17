@@ -47,3 +47,18 @@ pickle.dump(mlp,open('Project/Config/models/mlp_model.pkl','wb'))
 pickle.dump(knn,open('Project/Config/models/knn_model.pkl','wb'))
 pickle.dump(nb,open('Project/Config/models/nb_model.pkl','wb'))
 pickle.dump(rfc,open('Project/Config/models/rfc_model.pkl','wb'))
+
+def getDtScore():
+    return dt.score(x_test_std, y_test)
+
+def getKnnScore():
+    return knn.score(x_test_std, y_test)
+
+def getRfcScore():
+    return rfc.score(x_test_std, y_test)
+
+def getNbScore():
+    return nb.score(x_test_std, y_test)
+
+def getAnnScore():
+    return mlp.score(x_test_std, y_test)
