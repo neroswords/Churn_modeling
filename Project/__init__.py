@@ -87,7 +87,7 @@ def predict():
         print("Stay")
         complete_data.append("stay")
         f = open("./Project/Config/history.txt", "a")
-        f.write(",".join( repr(e) for e in complete_data ))
+        f.write(",".join( repr(e) for e in complete_data ).replace("'", ''))
         f.write("\n")
         f.close()
         return render_template('result.html',pred='stay')
