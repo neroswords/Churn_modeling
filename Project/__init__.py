@@ -22,6 +22,8 @@ rfc_model=pickle.load(open('./Project/Config/rfc_model.pkl','rb'))
 def home():
     return render_template('landing.html')
 
+
+
 @app.route('/predict',methods=['POST','GET'])
 def predict():
     stay_in = 0
@@ -54,6 +56,10 @@ def predict():
     predict_data_nb = nb_model.predict([features])
     predict_data_rfc = rfc_model.predict([features])
     predict_list = [predict_data_dt,predict_data_mlp,predict_data_knn,predict_data_nb,predict_data_rfc]
+    f = open("./Project/Config/history.txt", "a")
+    f.write(str(features))
+    f.write("\n")
+    f.close()
     # print(predict_data_dt)
     # print(predict_data_mlp)
     # print(predict_data_knn)
@@ -68,17 +74,25 @@ def predict():
             raise EnvironmentError
     if stay_in > leave :
         print("Stay")
-        return render_template('result.html',pred='stay')
+        return render_template('result.html',pred='features',fa=features)
     else :
         print("leave")
-        return render_template('result.html',pred='leave')
+        return render_template('result.html',pred='features',fa=features)
     
     # for model in models:
     #     predict_data = model.predict([features])
     #     print("2")
     #     print(predict_data)
     return "ok"
+
+
+
     # if output>str(0.5):
     #     return render_template('forest_fire.html',pred='Your Forest is in Danger.\nProbability of fire occuring is {}'.format(output),bhai="kuch karna hain iska ab?")
     # else:
     #     return render_template('forest_fire.html',pred='Your Forest is safe.\n Probability of fire occuring is {}'.format(output),bhai="Your Forest is Safe for now")
+@app.route('/history',methods=['POST','GET'])
+def history():
+    f = open("./Project/Config/history.txt", "r")
+    print(f.read())
+    f.close()
