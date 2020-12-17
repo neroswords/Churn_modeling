@@ -1,0 +1,33 @@
+.show-table{
+    margin-top: 5%;
+}
+
+h1{ 
+    
+    font-family: 'Prompt', sans-serif;
+    font-weight: bold;
+}
+
+table {
+    box-shadow: 0 1rem 4rem 0 rgba(0, 0, 0, 0.1);
+    margin-top:2%;
+    margin-bottom: 10%;
+    border: none;
+    width:70%;
+    margin-left: 3%;
+}
+
+table thead th{
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    /* width: 100px;
+    height: 70px; */
+}
+
+
+td{
+    text-align: left;
+    padding: 5px;
+}
