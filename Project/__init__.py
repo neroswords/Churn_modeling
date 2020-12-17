@@ -26,10 +26,11 @@ def home():
 
 
 
-@app.route('/predict',methods=['POST','GET'])
+@app.route('/predict',methods=['POST'])
 def predict():
     stay_in = 0
     leave = 0
+    pred = ""
     customer_id = request.form['id']
     customer_surname = request.form['lastname']
     customer_age = request.form['age']
@@ -88,14 +89,17 @@ def predict():
         else:
             raise EOFError
     if stay_in > leave :
-        print("Stay")
+        pred = "stat"
         complete_data.append("stay")
-        f = open("./Project/Config/log.txt", "a")
-        f.write(",".join( repr(e) for e in complete_data ).replace("'", ''))
-        f.write("\n")
-        f.close()
-        return render_template('result.html',
-                                pred='stay',
+    else :
+        pred = "leave"
+        complete_data.append("leave")
+    f = open("./Project/Config/log.txt", "a")
+    f.write(",".join( repr(e) for e in complete_data ).replace("'", ''))
+    f.write("\n")
+    f.close()
+    return render_template('result.html',
+                                pred=pred,
                                 dtpre = predict_data_dt,
                                 mlppre = predict_data_mlp,
                                 knnpre= predict_data_knn,
@@ -106,27 +110,8 @@ def predict():
                                 mlp_score = mlp_score,
                                 knn_score = knn_score,
                                 nb_score = nb_score,
-                                gender = complete_data[4] )
-    else :
-        print("leave")
-        complete_data.append("leave")
-        f = open("./Project/Config/log.txt", "a")
-        f.write(",".join( repr(e) for e in complete_data ).replace("'", ''))
-        f.write("\n")
-        f.close()
-        return render_template('result.html',
-                                pred='leave',
-                                dtpre = predict_data_dt,
-                                mlppre = predict_data_mlp,
-                                knnpre= predict_data_knn,
-                                nbpre = predict_data_nb,
-                                rfcpre= predict_data_rfc,
-                                dt_score = dt_score,
-                                rfc_score = rfc_score,
-                                mlp_score = mlp_score,
-                                knn_score = knn_score,
                                 gender = complete_data[4])
-    return 400
+    
 
 
 @app.route('/history',methods=['POST','GET'])
