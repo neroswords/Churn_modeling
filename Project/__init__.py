@@ -77,7 +77,7 @@ def predict():
         f.write(",".join( repr(e) for e in complete_data ).replace("'", ''))
         f.write("\n")
         f.close()
-        return render_template('result.html',pred='stay')
+        return render_template('result.html',pred='stay',dtpre = predict_data_dt,mlppre = predict_data_mlp,knnpre= predict_data_knn,nbpre = predict_data_nb, rfcpre= predict_data_rfc )
     else :
         print("leave")
         complete_data.append("leave")
@@ -85,7 +85,7 @@ def predict():
         f.write(",".join( repr(e) for e in complete_data ).replace("'", ''))
         f.write("\n")
         f.close()
-        return render_template('result.html',pred='leave')
+        return render_template('result.html',pred='leave',dtpre = predict_data_dt,mlppre = predict_data_mlp,knnpre= predict_data_knn,nbpre = predict_data_nb, rfcpre= predict_data_rfc )
     return "ok"
 
 
