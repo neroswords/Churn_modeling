@@ -37,3 +37,5 @@
   >code .
 
 ### this method you have to already install python 3.7 only**** on your pc and set PATH if not please do it first
+In case numpy error for the first time** 
+ >python -m pip install numpy==1.19.3 
