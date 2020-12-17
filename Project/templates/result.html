@@ -1,9 +1,3 @@
-<h1>He will {{pred}} from prediction</h1>
-{{dtpre}}
-{% if dtpre == [1]: %}
-    <p>yes</p>
-{% endif %}
-<button type="button" onclick="window.location.href='/history'">Click Me!</button>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -13,15 +7,104 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Churn result</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/css/result.css">
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.3.1/dist/css/bootstrap.min.css" >
+        
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        <div class="container col-xs-6 col-lg-7">
+            <div class="findjob-form">
+                <div class="text-center pt-5">
+                    <h1>{% if gender == 'Female':  %}
+                        She
+
+                        {% else : %}
+                        He
+
+                        {% endif %}
+                         will <span style="color:red">{{pred}}</span> from prediction</h1>
+                        
+                </div>
+                <div class="block-info text-form ">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                    <p>Decision tree</p>
+                                    <p>Neural network</p>
+                                    <p>k-nearest neighbors</p>
+                                    <p>Naive Bayes</p>
+                                    <p>Random forest</p>
+                            </div>
+
+                            <div class="form-group col-md-4" align ="center">
+                                    <!-- dtpre -->
+                                    {% if dtpre == [1]: %}
+                                        <p >Leave</p>
+                                    {% endif %}
+                                    
+                                    {% if dtpre == [0]: %}
+                                        <p>Stay</p>
+                                    {% endif %}
+
+                                    <!--mlppre -->
+                                    {% if mlppre == [1]: %}
+                                    <p>Leave</p>
+                                    {% endif %}
+                                
+                                    {% if mlppre == [0]: %}
+                                    <p>Stay</p>
+                                    {% endif %}
+
+                                    <!--knnpre  -->
+                                    {% if knnpre == [1]: %}
+                                    <p>Leave</p>
+                                    {% endif %}
+                                
+                                    {% if knnpre == [0]: %}
+                                    <p>Stay</p>
+                                    {% endif %}
+
+                                    <!--nbpre  -->
+                                    {% if nbpre == [1]: %}
+                                    <p>Leave</p>
+                                    {% endif %}
+                            
+                                    {% if nbpre == [0]: %}
+                                    <p>Stay</p>
+                                    {% endif %}
+
+                                    <!--rfcpre  -->
+                                    {% if rfcpre == [1]: %}
+                                    <p>Leave</p>
+                                    {% endif %}
+                            
+                                    {% if rfcpre == [0]: %}
+                                    <p>Stay</p>
+                                    {% endif %}
+                            </div>
+                            <div class="form-group col-md-4">
+                                   <p>Accuracy : {{dt_score}} </p> 
+                                   <p>Accuracy : {{mlp_score}} </p> 
+                                    <p>Accuracy : {{knn_score}}</p> 
+                                  <p>Accuracy : {{nb_score}}</p>  
+                                   <p>Accuracy : {{rfc_score}}</p> 
+                                    
+                            </div>    
+                        </div>
+                </div>
+                
+                    <div class="" align ="center" >
+                        <button type="submit" class="btn btn-success col-xs-4 col-sm-4 col-lg-6 btn-submit" onclick="window.location.href='/history'" >See history</button>
+                        <button type="submit" class="btn btn-primary col-xs-4 col-sm-4 col-lg-6 btn-submit" onclick="window.location.href='/'" >Home</button>
+                    
+                    </div>
+                
+            </div>
+        </div>  
+        
         
         <script src="" async defer></script>
     </body>

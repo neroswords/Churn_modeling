@@ -3,7 +3,7 @@ import json
 import pandas as pd
 import pickle
 import Project.Config.predict
-
+from Project.Config.predict import getDtScore,getKnnScore,getRfcScore,getNbScore,getAnnScore
 
 app = Flask(__name__)
 dt_model=pickle.load(open('./Project/Config/models/dt_model.pkl','rb'))
@@ -12,9 +12,16 @@ knn_model=pickle.load(open('./Project/Config/models/knn_model.pkl','rb'))
 nb_model=pickle.load(open('./Project/Config/models/nb_model.pkl','rb'))
 rfc_model=pickle.load(open('./Project/Config/models/rfc_model.pkl','rb'))
 
+dt_score = getDtScore()
+knn_score = getKnnScore()
+rfc_score = getRfcScore()
+nb_score = getNbScore()
+mlp_score = getAnnScore()
+
 f = open("./Project/Config/log.txt", "a")
 @app.route('/')
 def home():
+    print(dt_score)
     return render_template('landing.html')
 
 
@@ -64,13 +71,22 @@ def predict():
                         float(customer_credit_card),
                         float(customer_active),
                         float(customer_salary)]
+    if complete_data[4] == 0 : complete_data[4] = "Male"
+    else: complete_data[4] = "Female"
+    if complete_data[3] == 0 : complete_data[3] = "France"
+    elif complete_data[3] == 1 : complete_data[3] = "Germany"
+    elif complete_data[3] == 2 : complete_data[3] = "Spain"
+    if complete_data[10] == 0 : complete_data[10] = "No"
+    else: complete_data[10] = "Yes"
+    if complete_data[9] == 0 : complete_data[9] = "No"
+    else: complete_data[9] = "Yes"
     for x in predict_list:
         if x == [0]:
             stay_in += 1
         elif x == [1]:
             leave +=1
         else:
-            raise EnvironmentError
+            raise EOFError
     if stay_in > leave :
         print("Stay")
         complete_data.append("stay")
@@ -78,7 +94,19 @@ def predict():
         f.write(",".join( repr(e) for e in complete_data ).replace("'", ''))
         f.write("\n")
         f.close()
-        return render_template('result.html',pred='stay',dtpre = predict_data_dt,mlppre = predict_data_mlp,knnpre= predict_data_knn,nbpre = predict_data_nb, rfcpre= predict_data_rfc )
+        return render_template('result.html',
+                                pred='stay',
+                                dtpre = predict_data_dt,
+                                mlppre = predict_data_mlp,
+                                knnpre= predict_data_knn,
+                                nbpre = predict_data_nb,
+                                rfcpre= predict_data_rfc,
+                                dt_score = dt_score,
+                                rfc_score = rfc_score,
+                                mlp_score = mlp_score,
+                                knn_score = knn_score,
+                                nb_score = nb_score,
+                                gender = complete_data[4] )
     else :
         print("leave")
         complete_data.append("leave")
@@ -86,8 +114,19 @@ def predict():
         f.write(",".join( repr(e) for e in complete_data ).replace("'", ''))
         f.write("\n")
         f.close()
-        return render_template('result.html',pred='leave',dtpre = predict_data_dt,mlppre = predict_data_mlp,knnpre= predict_data_knn,nbpre = predict_data_nb, rfcpre= predict_data_rfc )
-    return "ok"
+        return render_template('result.html',
+                                pred='leave',
+                                dtpre = predict_data_dt,
+                                mlppre = predict_data_mlp,
+                                knnpre= predict_data_knn,
+                                nbpre = predict_data_nb,
+                                rfcpre= predict_data_rfc,
+                                dt_score = dt_score,
+                                rfc_score = rfc_score,
+                                mlp_score = mlp_score,
+                                knn_score = knn_score,
+                                gender = complete_data[4])
+    return 400
 
 
 @app.route('/history',methods=['POST','GET'])
