@@ -94,7 +94,7 @@ def history():
     # f = open("./Project/Config/history.txt", "r")
     # a = f.read()
     # f.close()
-    a = pd.read_csv('./Project/Config/history.txt', sep=',')
+    a = pd.read_csv('./Project/Config/history.txt', sep=',', error_bad_lines=False)
     a = a.to_html(index = False)
     print(a)
     return render_template('history.html',hist=a)
