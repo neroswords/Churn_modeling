@@ -4,8 +4,9 @@
 
 h1{ 
     
-    font-family: 'Prompt', sans-serif;
-    font-weight: bold;
+    /* font-family: 'Prompt', sans-serif;
+    font-weight: bold; */
+    font-size : xx-large;
 }
 
 table {
@@ -13,21 +14,29 @@ table {
     margin-top:2%;
     margin-bottom: 10%;
     border: none;
-    width:70%;
-    margin-left: 3%;
+    width:100%;
+    /* margin-left: 1%; */
+    table-layout: relative;
 }
 
 table thead th{
     background-color: #4CAF50;
     color: white;
     text-align: center;
-    padding: 5px;
-    /* width: 100px;
-    height: 70px; */
+    /* padding: 5px; */
+    /* width: 100%; */
+    /* height: 70px; */
 }
 
 
 td{
-    text-align: left;
-    padding: 5px;
+    text-align: right;
+    /* padding: 5px; */
 }
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+  
