@@ -1,1 +1,4 @@
 id,surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+1212,Lakhan,6.0,France,Male,6.0,6.0,6.0,6.0,Yes,Yes,5.0,leave
+1212,Lakhan,6.0,France,Male,6.0,6.0,6.0,6.0,Yes,Yes,5.0,leave
+1212,Lakhan,6.0,France,Male,6.0,6.0,6.0,6.0,Yes,Yes,5.0,leave
