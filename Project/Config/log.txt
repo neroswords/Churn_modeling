@@ -1,2 +1,1 @@
 id,surname,CreditScore,Country,Gender,Age,Tenure,Balance,NumOfCreditcard,HasCrCard,IsActiveMember,EstimatedSalary,Exited
-
