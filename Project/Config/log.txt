@@ -1,1 +1,2 @@
 id,surname,CreditScore,Country,Gender,Age,Tenure,Balance,NumOfCreditcard,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+f5d3g6b1e4g6a0b1b1,Roongpipat,100.0,Germany,Male,10.0,1.0,1000.0,4.0,Yes,No,40.0,leave
